@@ -1,4 +1,4 @@
-package org.example.pechecriee;
+package org.example.crieepeche;
 
 import org.junit.Test;
 

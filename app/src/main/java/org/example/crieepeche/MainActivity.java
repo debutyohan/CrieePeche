@@ -1,4 +1,4 @@
-package org.example.pechecriee;
+package org.example.crieepeche;
 
 import androidx.appcompat.app.AppCompatActivity;
 
