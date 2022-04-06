@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CrieePeche</string>
+    <string name="account">Account</string>
+    <string name="iconapp">IconApp</string>
+    <string name="contacter_le_support">Contacter le support</string>
+    <string name="acc_der_aux_documentations">Accéder aux documentations</string>
+    <string name="gestion_des_bacs">GESTION DES BACS</string>
+    <string name="ici_vous_pourrez_afficher_ajouter_modifier_et_supprimer_des_bacs_si_vous_tes_connect_vous_pourrez_synchroniser_les_bacs_avec_la_base_distante">Ici, vous pourrez afficher, ajouter, modifier et supprimer des bacs. Si vous êtes connecté, vous pourrez synchroniser les bacs avec la base distante.</string>
 </resources>

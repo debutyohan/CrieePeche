@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".listBacs"
+            android:name=".gstBacs"
             android:screenOrientation="portrait"
             />
     </application>

@@ -9,6 +9,8 @@ import android.widget.Button;
 
 import org.example.crieepeche.R;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
     private Button btn_afficherbacs;
 
@@ -20,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         btn_afficherbacs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listBacs();
+                gstBacs();
             }
         });
     }
 
-    public void listBacs() {
-        Intent intent = new Intent(this, listBacs.class);
+    public void gstBacs() {
+        Intent intent = new Intent(this, gstBacs.class);
         startActivity(intent);
     }
 }
