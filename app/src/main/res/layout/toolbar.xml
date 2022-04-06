@@ -23,8 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="ACCUEIL"
-            android:textSize="24dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="24dp" />
 
         <ImageView
             android:id="@+id/usermenu"
@@ -32,8 +32,8 @@
             android:layout_height="45dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="2dp"
-            android:src="@drawable/icons8_utilisateur_96"
-            android:onClick="showPopup"/>
+            android:onClick="showPopup"
+            android:src="@drawable/icons8_utilisateur_96" />
     </RelativeLayout>
 
 </RelativeLayout>

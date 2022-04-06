@@ -67,14 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
     public void gstBacs() {
         Intent intent = new Intent(this, gstBacs.class);
-=======
-
-    public void listBacs() {
-        Intent intent = new Intent(this, listBacs.class);
->>>>>>> a22634ba7a6af41b49056e6737c116e83af5a06e
         startActivity(intent);
     }
 }
