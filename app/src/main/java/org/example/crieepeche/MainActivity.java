@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         actionBar.hide();*/
 
         ImageView usermenu = (ImageView)findViewById(R.id.usermenu);
+        final TextView txt_title = (TextView) findViewById(R.id.textView_title);
+        txt_title.setText("ACCUEIL");
 
         usermenu.setOnClickListener(new View.OnClickListener(){
             @Override
