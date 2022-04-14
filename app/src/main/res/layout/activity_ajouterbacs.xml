@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_gstbacs"
+        layout="@layout/toolbar_gstbacs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txt_ajouterbacs_description"
+        android:layout_width="381dp"
+        android:layout_height="55dp"
+        android:text="@string/ici_vous_pourrez_afficher_ajouter_modifier_et_supprimer_des_bacs_si_vous_tes_connect_vous_pourrez_synchroniser_les_bacs_avec_la_base_distante"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_gstbacs"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.131" />
+
+    <TextView
+        android:id="@+id/txt_ajouterbacs_doc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="37dp"
+        android:text="@string/acc_der_aux_documentations"
+        android:textColor="#1976D2"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.922" />
+
+    <TextView
+        android:id="@+id/txt_ajouterbacs_support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/contacter_le_support"
+        android:textColor="#2C88D9"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963" />
+
+    <ImageView
+        android:id="@+id/img_ajouterbacs_appli"
+        android:layout_width="134dp"
+        android:layout_height="61dp"
+        android:contentDescription="@string/iconapp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/pngegg" />
+
+    <TextView
+        android:id="@+id/txt_ajouterbacs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajout d'un bac :"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="238dp"
+        android:layout_height="18dp"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

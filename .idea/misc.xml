@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/drawable/ic_baseline_house_24.xml" value="0.2203125" />
+        <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/activity_ajouterbacs.xml" value="0.20416666666666666" />
+        <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/activity_gstbacs.xml" value="0.17" />
+        <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/activity_listbacs.xml" value="0.12952898550724637" />
         <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/app_bar_main.xml" value="0.17255434782608695" />
+        <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/footer.xml" value="0.25" />
         <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/gestion_bacs.xml" value="0.1" />
         <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/toolbar.xml" value="0.25" />
+        <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/toolbar_footer.xml" value="0.12318840579710146" />
+        <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/layout/toolbar_gstbacs.xml" value="0.2" />
         <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/menu/game_menu.xml" value="0.1" />
         <entry key="..\:/WorkspaceAndroid/CrieePeche/CrieePeche/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Yohan/Programmation/Programmation en apk/CrieePeche/app/src/main/res/layout/activity_gstbacs.xml" value="0.2" />

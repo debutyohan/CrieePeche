@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/txt_accueil_support"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="14dp"
+            android:text="@string/contacter_le_support"
+            android:textColor="#2C88D9"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_accueil_doc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="41dp"
+            android:text="@string/acc_der_aux_documentations"
+            android:textColor="#1976D2"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/img_appli"
+            android:layout_width="134dp"
+            android:layout_height="61dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="2dp"
+            android:contentDescription="@string/iconapp"
+            android:onClick="showPopup"
+            android:src="@drawable/pngegg" />
+    </RelativeLayout>
+
+</RelativeLayout>

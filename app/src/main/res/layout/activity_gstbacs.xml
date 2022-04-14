@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/toolbar_gstbacs"
-        layout="@layout/toolbar"
+        layout="@layout/toolbar_gstbacs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
