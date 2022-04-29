@@ -41,6 +41,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="17dp"
         android:text="Vous n’êtes pas connecté. Pour vous connectez, cliquer sur l’image en haut à droite"
+        android:gravity="center"
         android:textColor="#C8C8C8"
         android:textSize="16sp"
         android:textStyle="italic"

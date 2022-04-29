@@ -119,7 +119,7 @@ public class BdHelper extends SQLiteOpenHelper {
         db.execSQL(req);
         req = "create table Bac(id integer, idDatePeche text,idEspece integer, idPresentation text, idTypeBac text, foreign key (idEspece) references Espece(id), foreign key (idPresentation) references Presentation(id), foreign key (idTypeBac) references TypeBac(id), primary key(id, idDatePeche));";
         db.execSQL(req);
-        req = "create table Utilisateur(id integer primary key, login text, token text, issync int, datelastsync text);";
+        req = "create table Utilisateur(login text, token text, datelastsync text);";
         db.execSQL(req);
         req = "insert into Bac values(1,'14/04/2022', 44010, 'VID', 'F');";
         db.execSQL(req);
@@ -142,6 +142,20 @@ public class BdHelper extends SQLiteOpenHelper {
         req = "insert into Bac values(6,'06/04/2022', 33730, 'ET', 'F');";
         db.execSQL(req);
         req = "insert into Bac values(7,'06/04/2022', 33500, 'VID', 'B');";
+        db.execSQL(req);
+        req = "insert into Bac values(1,'28/04/2022', 34150, 'ENT', 'B');";
+        db.execSQL(req);
+        req = "insert into Bac values(2,'28/04/2022', 37050, 'VID', 'F');";
+        db.execSQL(req);
+        req = "insert into Bac values(3,'28/04/2022', 33730, 'ET', 'B');";
+        db.execSQL(req);
+        req = "insert into Bac values(4,'28/04/2022', 33730, 'VID', 'B');";
+        db.execSQL(req);
+        req = "insert into Bac values(5,'28/04/2022', 33500, 'VID', 'F');";
+        db.execSQL(req);
+        req = "create table Sync(issync int);";
+        db.execSQL(req);
+        req = "insert into Sync values(1);";
         db.execSQL(req);
     }
     @Override

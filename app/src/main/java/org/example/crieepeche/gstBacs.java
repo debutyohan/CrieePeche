@@ -3,8 +3,11 @@ package org.example.crieepeche;
 import static android.view.View.VISIBLE;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,13 +20,24 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.List;
 
 public class gstBacs extends AppCompatActivity {
     private Button btn_gstbacs_add;
     private Button buttonOpenDialog;
     private GestionBD gestionBD;
+    private UserConnected userconnect;
+    private Sync sync;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +47,21 @@ public class gstBacs extends AppCompatActivity {
             @Override
             public void onClick(View view) {gstBacs_add(); }
         });
-        GestionBD gestionBD = new GestionBD(this);
         final TextView txt_title = (TextView) findViewById(R.id.textView_title);
         txt_title.setText("GESTION DES BACS");
+        userconnect = new UserConnected(gstBacs.this);
+        sync = new Sync(gstBacs.this);
+        if(userconnect.isconnect()) {
+            Button bouton_synchro = (Button) findViewById(R.id.btn_gstbacs_sync);
+            bouton_synchro.setEnabled(true);
+            bouton_synchro.setBackgroundColor(Color.rgb(44, 136, 217));
+            TextView textView_ifconnect = (TextView) findViewById(R.id.txt_gstbacs_ifconnect);
+            textView_ifconnect.setVisibility(View.INVISIBLE);
+        }
+        if(!sync.issync()){
+            TextView txt_ifsync = (TextView) findViewById(R.id.txt_gstbacs_ifnotsync);
+            txt_ifsync.setVisibility(VISIBLE);
+        }
         gestionBD = new GestionBD(this);
         gestionBD.open();
         List<Bac> list_bacs = gestionBD.donneBacs();
@@ -65,17 +91,28 @@ public class gstBacs extends AppCompatActivity {
             textview.setVisibility(VISIBLE);
             final Button bouton_suppr = (Button) findViewById(R.id.btn_gstbacs_del);
             bouton_suppr.setEnabled(false);
-            bouton_suppr.setBackgroundColor(Color.rgb(242,199,205));
+            bouton_suppr.setBackgroundColor(Color.argb(73, 211,69,91));
             final Button bouton_modif = (Button) findViewById(R.id.btn_gstbacs_modif);
             bouton_modif.setEnabled(false);
-            bouton_modif.setBackgroundColor(Color.rgb(253,237,189));
+            bouton_modif.setBackgroundColor(Color.argb(73,247,195,37));
         }else{
             ListView listViewBac = (ListView) findViewById(R.id.listView_bacs);
             listViewBac.setAdapter(new CustomListAdapter(this, list_bacs));
         }
 
-        ImageView usermenu = (ImageView)findViewById(R.id.usermenu);
+        ImageView iconaccueil = (ImageView)findViewById(R.id.iconmenu);
+        iconaccueil.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                gstBacs.this.finishActivity(0);
+                Intent intent = new Intent(gstBacs.this, MainActivity.class);
+                startActivity(intent);
+            }
 
+        });
+
+        userconnect = new UserConnected(gstBacs.this);
+        ImageView usermenu = (ImageView)findViewById(R.id.usermenu);
         usermenu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -83,18 +120,23 @@ public class gstBacs extends AppCompatActivity {
                 PopupMenu popupMenu = new PopupMenu(gstBacs.this, usermenu);
 
                 // Inflating popup menu from popup_menu.xml file
-                popupMenu.getMenuInflater().inflate(R.menu.menu, popupMenu.getMenu());
+                if(userconnect.isconnect()) {
+                    popupMenu.getMenuInflater().inflate(R.menu.menuconnect, popupMenu.getMenu());
+                }else{
+                    popupMenu.getMenuInflater().inflate(R.menu.menu, popupMenu.getMenu());
+                }
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.option_1:
-                                Toast.makeText(gstBacs.this, "You Clicked ", Toast.LENGTH_SHORT).show();
+                                login();
                                 return true;
-                            case R.id.option_2:
-                                System.exit(0);
+                            case R.id.option_connect_1:
+                                logout();
                                 return true;
                             default:
+                                System.exit(0);
                                 return false;
                         }
                     }
@@ -107,9 +149,18 @@ public class gstBacs extends AppCompatActivity {
     }
 
     private void gstBacs_add() {
+        gstBacs.this.finishActivity(0);
         Intent intent = new Intent(this, gstBacs_add.class);
         startActivity(intent);
     }
+
+
+    public void login() {
+        gstBacs.this.finishActivity(0);
+        Intent intent = new Intent(this, login.class);
+        startActivity(intent);
+    }
+
     private void buttonOpenDialogClicked()  {
         CustomDialog.ClickConfirmed listener = new CustomDialog.ClickConfirmed() {
             @Override
@@ -136,12 +187,85 @@ public class gstBacs extends AppCompatActivity {
                 }else{
                     listViewBac.setAdapter(new CustomListAdapter(gstBacs.this, list_bacs));
                 }
+                sync.unsync();
+                TextView txt_ifsync = (TextView) findViewById(R.id.txt_gstbacs_ifnotsync);
+                txt_ifsync.setVisibility(VISIBLE);
                 Toast toastdeleted = Toast.makeText(gstBacs.this,"Les bacs ont bien été supprimés", Toast.LENGTH_LONG);
                 toastdeleted.show();
             }
         };
-        final CustomDialog dialog = new CustomDialog(this, listener);
+        final CustomDialog dialog = new CustomDialog(this, listener, R.layout.dialog_supprbacs, R.id.btn_dialog_supprbacs_confirm, R.id.btn_dialog_supprbacs_annuler);
 
         dialog.show();
+    }
+
+    private void logout()  {
+        CustomDialog.ClickConfirmed listener = new CustomDialog.ClickConfirmed() {
+            @Override
+            public void clickconfirm() {
+                new gstBacs.req_logout().execute();
+            }
+        };
+        final CustomDialog dialog = new CustomDialog(this, listener, R.layout.dialog_deconnect, R.id.btn_dialog_deconnect_confirm, R.id.btn_dialog_deconnect_annuler);
+
+        dialog.show();
+    }
+    private class req_logout extends AsyncTask<String, String, String>
+    {
+        private ProgressDialog pDialog;
+        @Override
+        protected String doInBackground(String... strings) {
+            String token = userconnect.getToken();
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(JSON, "");
+            Request request = new Request.Builder().url("http://192.168.119.197:8000/api/logoutpecheur").addHeader("Content-Type", "application/json").addHeader("Authorization", "Bearer "+token).post(body).build();
+            Response response = null;
+            try {
+                response = client.newCall(request).execute();
+                return response.body().string();
+            } catch (IOException e) {
+
+            }
+            return null;
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(gstBacs.this);
+            pDialog.setMessage("Déconnexion en cours ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+        @Override
+        protected void onPostExecute(String json) {
+            pDialog.dismiss();
+            String msg="";
+            if(json==null){
+                msg="En revanche, la déconnexion n'est pas faite correctement sur l'API : Impossible de joindre le serveur API, veuillez vérifier votre connexion Internet et que le serveur API est accessible";
+            }else{
+                // textViewDonnees.setText(json.toString());
+                JSONObject c=null;
+                try {
+                    // Getting JSON Array from URL
+                    JSONObject obj = new JSONObject(json);
+                    if(obj.get("etatrequete").equals("Error")){
+                        msg="En revanche, la déconnexion n'est pas faite correctement sur l'API : "+obj.get("message").toString();
+                    }
+                    if(obj.get("etatrequete").equals("Success")){
+                        msg="La déconnexion sur l'API s'est faite correctement.";
+                    }
+                } catch (JSONException e) {
+                    // e.printStackTrace();
+                }
+            }
+            userconnect.deconnect();
+            Toast connectionsucess = Toast.makeText(gstBacs.this, "Vous avez été déconnecté depuis l'application. "+msg, Toast.LENGTH_LONG);
+            connectionsucess.show();
+            gstBacs.this.finishActivity(0);
+            Intent intent = new Intent(gstBacs.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }

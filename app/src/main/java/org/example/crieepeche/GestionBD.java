@@ -44,7 +44,7 @@ public class GestionBD {
         String formattedDate = dtf.format(dateObj);
         Log.i("BAC", String.valueOf(positionbacdeleted));
         int idbacdeleted = listebacs.get(positionbacdeleted).getNumBac();
-        maBase.execSQL("delete from Bac where id='"+idbacdeleted+"' and idDatePeche='"+formattedDate+"'");
+        maBase.execSQL("delete from Bac where id=? and idDatePeche=?", new Object[]{idbacdeleted,formattedDate });
         listebacs.remove(positionbacdeleted);
     }
     public ArrayList<Espece> donneEspece(){
