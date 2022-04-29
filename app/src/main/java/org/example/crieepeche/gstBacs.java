@@ -1,6 +1,7 @@
 package org.example.crieepeche;
 
 import static android.view.View.VISIBLE;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -26,10 +28,12 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class gstBacs extends AppCompatActivity {
@@ -46,6 +50,11 @@ public class gstBacs extends AppCompatActivity {
         btn_gstbacs_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {gstBacs_add(); }
+        });
+        Button btn_gstbacs_sync = (Button) findViewById(R.id.btn_gstbacs_sync);
+        btn_gstbacs_sync.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {new gstBacs.req_sync_lots().execute(); }
         });
         final TextView txt_title = (TextView) findViewById(R.id.textView_title);
         txt_title.setText("GESTION DES BACS");
@@ -219,7 +228,7 @@ public class gstBacs extends AppCompatActivity {
             MediaType JSON = MediaType.parse("application/json; charset=utf-8");
             OkHttpClient client = new OkHttpClient();
             RequestBody body = RequestBody.create(JSON, "");
-            Request request = new Request.Builder().url("http://192.168.119.197:8000/api/logoutpecheur").addHeader("Content-Type", "application/json").addHeader("Authorization", "Bearer "+token).post(body).build();
+            Request request = new Request.Builder().url("http://"+getString(R.string.api_host_ip)+":8000/api/logoutpecheur").addHeader("Content-Type", "application/json").addHeader("Authorization", "Bearer "+token).post(body).build();
             Response response = null;
             try {
                 response = client.newCall(request).execute();
@@ -266,6 +275,88 @@ public class gstBacs extends AppCompatActivity {
             gstBacs.this.finishActivity(0);
             Intent intent = new Intent(gstBacs.this, MainActivity.class);
             startActivity(intent);
+        }
+    }
+
+    private class req_sync_lots extends AsyncTask<String, String, String>
+    {
+        private ProgressDialog pDialog;
+        @Override
+        protected String doInBackground(String... strings) {
+            String token = userconnect.getToken();
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+            OkHttpClient client = new OkHttpClient();
+            JSONObject datalistebacs = new JSONObject();
+            JSONArray listebacsput = new JSONArray();
+            ArrayList<Bac> listebacs = gestionBD.donneBacs();
+            for (Bac unbac:listebacs) {
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("id", unbac.getNumBac());
+                    jsonObject.put("espece", unbac.getIdEspece());
+                    jsonObject.put("presentation", unbac.getIdPresentation());
+                    jsonObject.put("typebac", unbac.getTypeBac());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listebacsput.put(jsonObject);
+            }
+            try {
+                datalistebacs.put("lots", listebacsput);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            EditText login = (EditText)findViewById(R.id.etxt_login_login);
+            EditText password = (EditText)findViewById(R.id.etxt_login_password);
+            RequestBody body = RequestBody.create(JSON, datalistebacs.toString());
+            Request request = new Request.Builder().url("http://"+getString(R.string.api_host_ip)+":8000/api/synclots").addHeader("Content-Type", "application/json").addHeader("Authorization", "Bearer "+token).post(body).build();
+            Response response = null;
+            try {
+                response = client.newCall(request).execute();
+                return response.body().string();
+            } catch (IOException e) {
+
+            }
+            return null;
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(gstBacs.this);
+            pDialog.setMessage("Synchronisation en cours ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+        @Override
+        protected void onPostExecute(String json) {
+            pDialog.dismiss();
+            String msg="";
+            if(json==null){
+                msg="Impossible de joindre le serveur API, veuillez vérifier votre connexion Internet et que le serveur API est accessible";
+            }else{
+                // textViewDonnees.setText(json.toString());
+                JSONObject c=null;
+                try {
+                    // Getting JSON Array from URL
+                    JSONObject obj = new JSONObject(json);
+                    if(obj.get("etatrequete").equals("Error")){
+                        msg="Synchronisation échouée : "+obj.get("message").toString();
+                    }
+                } catch (JSONException e) {
+                    // e.printStackTrace();
+                }
+                TextView txt_gstbacs_msgerrorsync = (TextView) findViewById(R.id.txt_gstbacs_msgerrorsync);
+                txt_gstbacs_msgerrorsync.setText(msg);
+                if(msg==""){
+                    sync.sync();
+                    Log.i("JSON", "OK");
+                    Toast connectionsucess = Toast.makeText(gstBacs.this, "Les bacs ont été synchronisés ", Toast.LENGTH_LONG);
+                    connectionsucess.show();
+                    TextView txt_ifsync = (TextView) findViewById(R.id.txt_gstbacs_ifnotsync);
+                    txt_ifsync.setVisibility(View.INVISIBLE);
+                }
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package org.example.crieepeche;
 
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -103,7 +104,7 @@ public class login extends AppCompatActivity {
                 e.printStackTrace();
             }
             RequestBody body = RequestBody.create(JSON, jsonObject.toString());
-            Request request = new Request.Builder().url("http://192.168.119.197:8000/api/loginpecheur").addHeader("Content-Type", "application/json").post(body).build();
+            Request request = new Request.Builder().url("http://"+getString(R.string.api_host_ip)+":8000/api/loginpecheur").addHeader("Content-Type", "application/json").post(body).build();
             Response response = null;
             try {
                 response = client.newCall(request).execute();

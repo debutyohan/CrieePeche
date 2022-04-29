@@ -1,6 +1,6 @@
 package org.example.crieepeche;
 
-import androidx.appcompat.app.ActionBar;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             MediaType JSON = MediaType.parse("application/json; charset=utf-8");
             OkHttpClient client = new OkHttpClient();
             RequestBody body = RequestBody.create(JSON, "");
-            Request request = new Request.Builder().url("http://192.168.119.197:8000/api/logoutpecheur").addHeader("Content-Type", "application/json").addHeader("Authorization", "Bearer "+token).post(body).build();
+            Request request = new Request.Builder().url("http://"+getString(R.string.api_host_ip)+":8000/api/logoutpecheur").addHeader("Content-Type", "application/json").addHeader("Authorization", "Bearer "+token).post(body).build();
             Response response = null;
             try {
                 response = client.newCall(request).execute();
