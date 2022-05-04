@@ -12,6 +12,7 @@
         tools:context=".MainActivity">
 
         <ImageView
+            android:id="@+id/iconmenu"
             android:layout_width="80dp"
             android:layout_height="45dp"
             android:layout_alignParentTop="true"

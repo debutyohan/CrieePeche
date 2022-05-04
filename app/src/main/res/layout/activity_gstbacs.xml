@@ -5,6 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/txt_gstbacs_msgerrorsync"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="144dp"
+        android:gravity="center"
+        android:textColor="#FF0000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_afficherbacs"
+        app:layout_constraintVertical_bias="0.164"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/txt_gstbacs_ifconnect"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="132dp"
+        android:gravity="center"
+        android:text="Vous devez être connecté pour synchroniser les bacs"
+        android:textColor="#C8C8C8"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_afficherbacs"
+        app:layout_constraintVertical_bias="0.164"
+        tools:ignore="HardcodedText" />
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
@@ -57,9 +93,10 @@
         android:id="@+id/btn_gstbacs_sync"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="Synchroniser les bacs"
         android:textSize="16sp"
-        app:backgroundTint="#2c88d9"
+        app:backgroundTint="#492c88d9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -77,10 +114,10 @@
         app:backgroundTint="#f7c325"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.787"
+        app:layout_constraintVertical_bias="0.756"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <Button
@@ -92,10 +129,10 @@
         app:backgroundTint="#1aae7f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705"
+        app:layout_constraintVertical_bias="0.672"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <Button
@@ -110,14 +147,15 @@
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742"
+        app:layout_constraintVertical_bias="0.717"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/txt_gstbacs_description"
-        android:layout_width="381dp"
-        android:layout_height="55dp"
-        android:text="@string/ici_vous_pourrez_afficher_ajouter_modifier_et_supprimer_des_bacs_si_vous_tes_connect_vous_pourrez_synchroniser_les_bacs_avec_la_base_distante"
+        android:layout_width="378dp"
+        android:layout_height="60dp"
+        android:text="@string/txt_gstbacs_description"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
@@ -128,14 +166,14 @@
     <ListView
         android:id="@+id/listView_bacs"
         android:layout_width="377dp"
-        android:layout_height="295dp"
+        android:layout_height="274dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.374" />
 
     <TextView
         android:id="@+id/txt_nobacs"
@@ -150,4 +188,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_gstbacs_ifnotsync"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attention, vos bacs n'ont été pas encore synchronisés"
+        android:textColor="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/listView_bacs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_gstbacs_description" />
+
+    <TextView
+        android:id="@+id/txt_gstbacs_ifnotsync2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attention, vos bacs n'ont été pas encore synchronisés"
+        android:textColor="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/listView_bacs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_gstbacs_description"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

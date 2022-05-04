@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/option_connect_1"
+        android:title="Se déconnecter" />
+    <item
+        android:id="@+id/option_connect_2"
+        android:gravity="center"
+        android:title="Mon compte" />
+    <item
+        android:id="@+id/option_connect_3"
+        android:title="Quitter" />
+</menu>

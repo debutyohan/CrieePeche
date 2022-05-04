@@ -26,9 +26,9 @@ public class GestionBD {
         String formattedDate = dtf.format(dateObj);
         Log.i("DATABASE", formattedDate);
         listebacs = new ArrayList<Bac>();
-        Cursor c = maBase.rawQuery("select Bac.id, idDatePeche, Espece.nom, Presentation.libelle, idTypeBac from Bac inner join Presentation on Presentation.id=Bac.idPresentation inner join Espece on Espece.id=Bac.idEspece where idDatePeche='"+formattedDate+"'",null);
+        Cursor c = maBase.rawQuery("select Bac.id, idDatePeche, Espece.nom, Presentation.libelle, idTypeBac, idEspece, idPresentation from Bac inner join Presentation on Presentation.id=Bac.idPresentation inner join Espece on Espece.id=Bac.idEspece where idDatePeche='"+formattedDate+"'",null);
         while (c.moveToNext()) {
-            listebacs.add(new Bac(Integer.parseInt(c.getString(0)), c.getString(1), c.getString(2), c.getString(3), c.getString(4)));
+            listebacs.add(new Bac(Integer.parseInt(c.getString(0)), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6)));
         }
     }
     public void close(){
@@ -44,7 +44,7 @@ public class GestionBD {
         String formattedDate = dtf.format(dateObj);
         Log.i("BAC", String.valueOf(positionbacdeleted));
         int idbacdeleted = listebacs.get(positionbacdeleted).getNumBac();
-        maBase.execSQL("delete from Bac where id='"+idbacdeleted+"' and idDatePeche='"+formattedDate+"'");
+        maBase.execSQL("delete from Bac where id=? and idDatePeche=?", new Object[]{idbacdeleted,formattedDate });
         listebacs.remove(positionbacdeleted);
     }
     public ArrayList<Espece> donneEspece(){

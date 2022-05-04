@@ -6,8 +6,8 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/toolbar_gstbacs"
-        layout="@layout/toolbar_gstbacs"
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -15,7 +15,7 @@
         android:id="@+id/txt_ajouterbacs_description"
         android:layout_width="381dp"
         android:layout_height="55dp"
-        android:text="@string/ici_vous_pourrez_afficher_ajouter_modifier_et_supprimer_des_bacs_si_vous_tes_connect_vous_pourrez_synchroniser_les_bacs_avec_la_base_distante"
+        android:text="@string/txt_gstbacs_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/toolbar_gstbacs"
         app:layout_constraintHorizontal_bias="0.6"
