@@ -51,14 +51,11 @@ public class gstBacs extends AppCompatActivity {
             @Override
             public void onClick(View view) {gstBacs_add(); }
         });
-<<<<<<< HEAD
-=======
         Button btn_gstbacs_sync = (Button) findViewById(R.id.btn_gstbacs_sync);
         btn_gstbacs_sync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {new gstBacs.req_sync_lots().execute(); }
         });
->>>>>>> 79bf32fcfb7d47e76f97446f0f487a4ab3d6dfbd
         final TextView txt_title = (TextView) findViewById(R.id.textView_title);
         txt_title.setText("GESTION DES BACS");
         userconnect = new UserConnected(gstBacs.this);
