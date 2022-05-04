@@ -33,7 +33,6 @@ public class gstBacs extends AppCompatActivity {
             @Override
             public void onClick(View view) {gstBacs_add(); }
         });
-        GestionBD gestionBD = new GestionBD(this);
         final TextView txt_title = (TextView) findViewById(R.id.textView_title);
         txt_title.setText("GESTION DES BACS");
         gestionBD = new GestionBD(this);

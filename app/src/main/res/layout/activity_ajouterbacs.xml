@@ -69,16 +69,40 @@
         android:id="@+id/txt_ajouterbacs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Ajout d'un bac :"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="165dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_ajouterbacs_description" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinner_espece"
         android:layout_width="238dp"
         android:layout_height="18dp"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="223dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.302"
+        />
+
+    <TextView
+        android:id="@+id/txt_espece"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Espèce : "
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="216dp" />
+
+    <TextView
+        android:id="@+id/txt_presentation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Présentation : "
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="268dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
