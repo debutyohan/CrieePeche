@@ -1,0 +1,19 @@
+USE bddCrie2;
+SET FOREIGN_KEY_CHECKS = 0;
+SET NAMES 'utf8';
+INSERT INTO TypeUtilisateur(id, libelle) VALUES (6, 'Pêcheur');
+CREATE TABLE Pecheur
+(
+    id      INTEGER   UNSIGNED  NOT NULL,
+    idBateau     INTEGER  UNSIGNED      NOT NULL,
+    CONSTRAINT PK_PECHEUR PRIMARY KEY (id),
+  	CONSTRAINT FK_PECHEUR_UTILISATEUR FOREIGN KEY  (id) references Utilisateur (id),
+  	CONSTRAINT FK_PECHEUR_BATEAU FOREIGN KEY  (idBateau) references Bateau (id),
+  	CONSTRAINT INDEX_PECHEUR_BATEAU UNIQUE INDEX (idBateau)
+    
+) ENGINE = INNODB;
+ALTER TABLE Bac CHANGE COLUMN idLot idLot DECIMAL(5,0) NOT NULL AFTER idBateau;
+ALTER TABLE Lot CHANGE COLUMN idLot idLot DECIMAL(5,0) NOT NULL AFTER idBateau;
+  CHANGE COLUMN idTaille idTaille DECIMAL(2,0) NULL AFTER idEspece,
+	CHANGE COLUMN idQualite idQualite CHAR(1) NULL COLLATE latin1_general_ci AFTER idPresentation;
+SET FOREIGN_KEY_CHECKS = 1;

@@ -334,6 +334,9 @@ public class gstBacs extends AppCompatActivity {
             String msg="";
             if(json==null){
                 msg="Impossible de joindre le serveur API, veuillez vérifier votre connexion Internet et que le serveur API est accessible";
+                TextView txt_gstbacs_msgerrorsync = (TextView) findViewById(R.id.txt_gstbacs_msgerrorsync);
+                txt_gstbacs_msgerrorsync.setText(msg);
+                return;
             }else{
                 // textViewDonnees.setText(json.toString());
                 JSONObject c=null;

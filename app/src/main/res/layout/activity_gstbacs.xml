@@ -10,13 +10,13 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginBottom="120dp"
         android:gravity="center"
         android:textColor="#FF0000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_afficherbacs"
         app:layout_constraintVertical_bias="0.164"
@@ -35,7 +35,7 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_afficherbacs"
         app:layout_constraintVertical_bias="0.164"
@@ -102,7 +102,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872"
+        app:layout_constraintVertical_bias="0.877"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <Button
@@ -114,10 +114,10 @@
         app:backgroundTint="#f7c325"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756"
+        app:layout_constraintVertical_bias="0.73"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <Button
@@ -129,10 +129,10 @@
         app:backgroundTint="#1aae7f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672"
+        app:layout_constraintVertical_bias="0.642"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <Button
@@ -144,10 +144,10 @@
         app:backgroundTint="#d3455b"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717"
+        app:layout_constraintVertical_bias="0.692"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
@@ -165,8 +165,8 @@
 
     <ListView
         android:id="@+id/listView_bacs"
-        android:layout_width="377dp"
-        android:layout_height="274dp"
+        android:layout_width="382dp"
+        android:layout_height="255dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

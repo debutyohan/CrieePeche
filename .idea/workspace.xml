@@ -10,19 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c62ae37b-f6c7-429e-8eac-0a8d9fa2bbf9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/Bac.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/Bac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220428_231358.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220428_231440.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220428_231538.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220428_231807.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220428_234746.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220428_235255.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220428_235324.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220429_111439.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot_20220429_112234.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/BdHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/BdHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/GestionBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/GestionBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/gstBacs.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/gstBacs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/example/crieepeche/login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gstbacs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gstbacs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +100,7 @@
     <property name="android-custom-viewC:/Users/LENOVO/AppData/Local/Android/Sdk/sources/android-31/android/widget/ImageView.java_ImageView_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-viewC:/Users/LENOVO/AppData/Local/Android/Sdk/sources/android-31/android/widget/ImageView.java_SELECTED" value="ImageView" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">

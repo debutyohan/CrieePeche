@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CrieePeche</string>
-    <string name="api_host_ip">192.168.1.24</string>
+    <string name="api_host_ip">192.168.43.150</string>
     <string name="account">Account</string>
     <string name="iconapp">IconApp</string>
     <string name="contacter_le_support">Contacter le support</string>
